@@ -58,7 +58,27 @@ The goal of this API is to manage and apply different types of discount coupons 
 ## Limitations
 
 1. **Coupon stacking rules**: Currently, the API does not allow stacking multiple coupons on the same cart item, but this could be a future enhancement. Though it is allowed, it'll lead to compounding of discounts which is not desired.
-1. **BxGy limitations**: The API supports B2G1 coupons completely but has scope of improvement in the B2G2 or similar classes. The issue being currently, the discount gets applied to all the items in the getProducts list.
+1. **BxGy limitations**:
+
+- The API supports B2G1 coupons completely but has scope of improvement in the B2G2 or similar classes. The issue being currently, the discount gets applied to all the items in the getProducts list.
+- Another problem with them being that it is currently not able to disscern various products and apply coupon after taking into account prices of the products.
+- For example
+  If I have 2 products in my cart like so
+  ```
+   {
+            "productId": 1,
+            "quantity": 6,
+            "price": 100
+        },
+        {
+            "productId": 2,
+            "quantity": 3,
+            "price": 200
+        },
+  ```
+- And my coupon is being applied, then it according to the benefit of the consumer, it should initially be applied to the costliest product and then after that the next costlier product. In a descending order of cost.
+- This cost is the cost of a single quantity of that item not the cost of quantity \* singlePrice.
+- Currently this is not implemented.
 
 ## Future Enhancements
 
