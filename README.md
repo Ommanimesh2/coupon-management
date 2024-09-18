@@ -2,7 +2,7 @@
 
 ## Objective
 
-The goal of this API is to manage and apply different types of discount coupons for an e-commerce platform. The API supports multiple coupon types, such as cart-wise, product-wise, and buy-x-get-y (BxGy). The system is designed to be extensible, allowing the addition of new coupon types in the future.
+The goal of this API is to manage and apply different types of discount coupons for an e-commerce platform. The API supports multiple coupon types, such as cart-wise, product-wise, and buy-x-get-y (BxGy) (specifically, BnG1). The system is designed to be extensible, allowing the addition of new coupon types in the future.
 
 ## Coupon Types
 
@@ -16,27 +16,16 @@ The goal of this API is to manage and apply different types of discount coupons 
 
 - **Threshold-based discount**: If the total value of the cart exceeds a specified amount, a percentage discount is applied.
   - **Example**: 10% off on carts worth more than $100.
-- **Edge cases**:
-  - Cart total after applying a discount still meets the threshold.
 
 ### Product-wise Coupons
 
 - **Product-specific discount**: A percentage or fixed discount is applied to specific products in the cart.
-  - **Example**: 20% off on all shoes.
-- **Edge cases**:
-  - Multiple quantities of the same product.
-  - Products eligible for different types of discounts.
-  - Products that are part of bundles or sets.
+  - **Example**: 20% off on product_id 1.
 
 ### BxGy Coupons
 
 - **Buy-X-Get-Y scenario**: Customers can get certain products for free when they purchase a specified number of other products.
   - **Example**: Buy 2 of Product A and get 1 of Product B for free.
-  - **Edge cases**:
-    - The cart contains partial quantities of required products.
-    - More than one eligible free product but the coupon can only be applied a limited number of times.
-    - The coupon's "repetition limit" restricts how many times the offer can be applied.
-    - Handling carts where products are insufficient to fully meet the conditions of the offer.
 
 ## Assumptions for proper funcitoning
 
@@ -73,10 +62,10 @@ The goal of this API is to manage and apply different types of discount coupons 
 
 ## Future Enhancements
 
-1. **Additional Coupon Types**: The system should easily accommodate new coupon types (e.g., time-limited coupons, user-specific coupons).
-2. **Coupon Validation Enhancements**: Extend the validation system to cover more complex conditions such as user eligibility, time windows, or product categories.
-3. **Bulk Discounts**: Implement a bulk discount coupon that provides a discount when a customer buys a large quantity of a product (e.g., 10% off for buying 10 or more items).
-4. **API Performance Optimizations**: As the number of products and coupons increases, consider caching coupon validation logic or precomputing discount eligibility.
+1. **Additional Coupon Types**: The system should easily accommodate new coupon types (e.g., B2G2, time-limited coupons, user-specific coupons).
+2. **Coupon Validation Enhancements**: Extend the validation system to cover more complex conditions such as user eligibility, expiration time, or product categories.
+3. **Unit Tests**: The tests can be written to ensure proper funtioning without need to do manual API testing
+4. **Bulk Discounts**: Implement a bulk discount coupon that provides a discount when a customer buys a large quantity of a product (e.g., 10% off for buying 10 or more items).
 
 ## Key Code Features
 
@@ -123,6 +112,4 @@ The goal of this API is to manage and apply different types of discount coupons 
 7. **Get Applicable Coupons**: `POST /coupons/applicable-coupons`
    - Returns a list of coupons applicable to the current cart.
 
-## Conclusion
-
-This system is designed to handle a variety of coupon types and provide flexibility for future extension. While certain cases like stacking and partial fulfillment are not yet handled, the current implementation is robust for the core use cases outlined.
+Sample API collection of postman is attached for easy reference
