@@ -1,0 +1,142 @@
+{
+	"info": {
+		"_postman_id": "f181cef1-c8b3-446c-a309-a55feaeb0ce5",
+		"name": "monk",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "32313690"
+	},
+	"item": [
+		{
+			"name": "addBxGyCoupon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"type\": \"BXGY\",\r\n  \"details\": {\r\n    \"buyProducts\": [\r\n      { \"product_id\": 1, \"quantity\": 3 },\r\n      { \"product_id\": 2, \"quantity\": 3 }\r\n    ],\r\n    \"getProducts\": [\r\n      { \"product_id\": 3, \"quantity\": 1 },\r\n      { \"product_id\": 3, \"quantity\": 1 }\r\n    ],\r\n    \"repetitionLimit\": 2\r\n  }\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/coupons"
+			},
+			"response": []
+		},
+		{
+			"name": "getCouponById",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/coupons/1"
+			},
+			"response": []
+		},
+		{
+			"name": "applicable-coupons",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n\r\n    \"items\": [\r\n      { \"productId\": 1, \"quantity\": 6, \"price\": 50 },  // Product X\r\n      { \"productId\": 2, \"quantity\": 3, \"price\": 30 },  // Product Y\r\n      { \"productId\": 3, \"quantity\": 2, \"price\": 25 }   // Product Z\r\n    ]\r\n}\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/coupons/applicable-coupons"
+			},
+			"response": []
+		},
+		{
+			"name": "apply-coupon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"items\": [\r\n      { \"productId\": 1, \"quantity\": 6, \"price\": 50 },  // Product X\r\n      { \"productId\": 2, \"quantity\": 3, \"price\": 30 },  // Product Y\r\n      { \"productId\": 3, \"quantity\": 2, \"price\": 25 }   // Product Z\r\n    ]\r\n  }",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/coupons/apply-coupon/3"
+			},
+			"response": []
+		},
+		{
+			"name": "addCartCoupon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"CART_WISE\",\r\n    \"details\": {\r\n        \"threshold\": 100,\r\n        \"discount\": 10\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/coupons"
+			},
+			"response": []
+		},
+		{
+			"name": "addProductCoupon",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"type\": \"PRODUCT_WISE\",\r\n    \"details\": {\r\n        \"product_id\": 1,\r\n        \"discount\": 10\r\n    }\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/coupons"
+			},
+			"response": []
+		},
+		{
+			"name": "getAllCoupons",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8081/coupons"
+			},
+			"response": []
+		}
+	]
+}
